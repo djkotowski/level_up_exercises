@@ -16,7 +16,7 @@ Given(/^I am on the merchant index$/) do
 end
 
 When(/^I search a matching ZIP$/) do
-  search_merchants("60604")
+  search_merchants("60654")
 end
 
 When(/^I search without a ZIP$/) do
