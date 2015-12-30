@@ -9,7 +9,7 @@ class SearchLocuVenues
 
   private
 
-  def build_location(location, location_data)
+  def build_location(_location, location_data)
     return nil unless location_data
 
     Location.new.tap do |location|

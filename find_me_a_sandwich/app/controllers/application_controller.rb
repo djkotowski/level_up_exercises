@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
 
   def delivery_client
     Delivery::Client.new(AppConfig.delivery.site,
-      ENV["DELIVERY_API_KEY"],
-      ENV["DELIVERY_API_SECRET"],
+      "c03950f523d31a1a1cdf622143cf95875a37b413",
+      "c03950f523d31a1a1cdf622143cf95875a37b413",
       delivery_auth_callback_url)
   end
 end

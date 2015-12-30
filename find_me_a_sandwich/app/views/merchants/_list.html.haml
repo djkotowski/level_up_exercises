@@ -6,7 +6,7 @@
           .col-md-8
             %h3.panel-title= merchant.name
           .col-md-4.text-right
-            = link_to(merchant_path(merchant, location: @location), class: "btn btn-info") do
+            = link_to(merchant_path(merchant, location: @location), class: "btn btn-info merchant-link") do
               %i.glyphicon.glyphicon-th-list
               &nbsp;See More
       .panel-body

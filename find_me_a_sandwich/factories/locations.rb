@@ -3,6 +3,6 @@ FactoryGirl.define do
     street { Faker::Address.street_address }
     city   { Faker::Address.city }
     state  { Faker::Address.state_abbr }
-    zip    { Faker::Address.zip }
+    zip "60606"
   end
 end

@@ -21,7 +21,7 @@ describe SearchLocuVenues, type: :interactor do
 
   it "searches through Locu" do
     expect(locu_client).to receive(:search_venues).with(
-      hash_including(location: { postal_code: "60604" }),
+      hash_including(location: { postal_code: "60604" })
     )
 
     search

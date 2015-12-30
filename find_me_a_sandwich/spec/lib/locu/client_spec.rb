@@ -12,8 +12,10 @@ describe Locu::Client do
   describe "#search_venues" do
     let(:url) { "#{described_class::HOST}/v2/venue/search" }
     let(:params) { { location: { zip: "60604" } } }
+    let(:menu_item_params) { { name: "test_name" } }
     let(:response) { { success: true }.to_json }
     subject(:search) { client.search_venues(params) }
+    subject(:search2) { client.search_venues(menu_item_params) }
 
     before(:each) do
       stub_request(:post, url).to_return(
@@ -31,10 +33,21 @@ describe Locu::Client do
 
     it "includes any venue parameters included" do
       expected_body = {
-        "venue_queries" => [{ "location" => { "zip" => "60604" } }],
+        "venue_queries" => [{ "location" => { "zip" => "60604" } }]
       }
 
       search
+
+      expect(WebMock).to have_requested(:post, url)
+        .with(body: hash_including(expected_body))
+    end
+
+    it "includes any menu item params" do
+      expected_body = {
+        "venue_queries" => [{ "name" => "test_name" }]
+      }
+
+      search2
 
       expect(WebMock).to have_requested(:post, url)
         .with(body: hash_including(expected_body))

@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def profile_params
     params.require(:user).permit(:last_name, :first_name, :phone, :city, :state,
-                                 :zip, :about, :profile_visible,
-                                 :contact_visible)
+      :zip, :about, :profile_visible,
+      :contact_visible)
   end
 end

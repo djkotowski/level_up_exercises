@@ -1,0 +1,20 @@
+.page-header
+  %h1 Friends Favorites
+  %h2 You have #{@friends.count} #{"Friend".pluralize(@friends.count)}
+  %h2 They have #{@total_count} #{"Favorite".pluralize(@total_count)}
+- if @total_count
+  %table
+    %thead
+      %tr
+        %th Friend
+        %th Menu Item
+        %th Location
+    %tbody
+      - @friends_favorites.each do |friend|
+        - friend[:favorites].each do |favorite|
+          %tr
+            %td= friend[:name]
+            %td= favorite.menu_item.name
+            %td= favorite.menu_item.menu.merchant.name
+-else
+  %h3 Your friends have no favorites

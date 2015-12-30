@@ -12,3 +12,7 @@
               %tr
                 %th= item.name
                 %td= item.description
+                - if menu_item_in_favorites(item)
+                  %td= link_to 'Remove from Favorites', {controller: "favorites", action: "destroy", menu_item_id: item.id}, {class: "btn btn-default remove-favorite", method: :delete}
+                - else
+                  %td= link_to 'Add to Favorites', {controller: "favorites", action: "create", menu_item_id: item.id}, {class: "btn btn-default add-favorite", method: :post}

@@ -7,7 +7,7 @@ end
 
 Given(/^I have a valid account$/) do
   @password = "testtest"
-  @user = FactoryGirl.create(:user, password: @password)
+  @user = FactoryGirl.create(:user, password: @password, profile_visible: true)
 end
 
 Given(/^I am on the login page$/) do

@@ -1,0 +1,15 @@
+.page-header
+  %h1 Favorites
+  %h2 You have #{current_user.favorites.count} #{"Favorite".pluralize(current_user.favorites.count)}
+%table
+  %thead
+    %tr
+      %th Menu Item
+      %th Location
+  %tbody
+    - current_user.favorites.each do |favorite|
+      %tr
+        %td= favorite.menu_item.name
+        %td= favorite.menu_item.menu.merchant.name
+        %td= link_to 'Remove from Favorites', "/favorites/1?menu_item_id=#{favorite.menu_item_id}", 
+          {class: "btn btn-default remove-favorite", method: :delete}

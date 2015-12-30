@@ -11,6 +11,8 @@ class MerchantsController < ApplicationController
   private
 
   def locu_client
+    puts "KEY IS #{Rails.application.secrets.locu_api_key}"
+    puts "ENV IS #{Rails.env}"
     Locu::Client.new(Rails.application.secrets.locu_api_key)
   end
 
