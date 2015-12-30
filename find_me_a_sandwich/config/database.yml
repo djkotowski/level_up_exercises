@@ -1,20 +1,24 @@
 default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: find_me_a_sandwich_development
+
+test: &test
   adapter: sqlite3
   encoding: unicode
   pool: 5
   timeout: 5000
-
-development:
-  <<: *default
-  database: db/development.sqlite3
-
-test: &test
-  <<: *default
   database: db/test.sqlite3
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: find_me_a_sandwich_production
+  username: find_me_a_sandwich
+  password: <%= ENV['MAKE_ME_A_SANDWICH_DATABASE_PASSWORD'] %>
 
 cucumber:
   <<: *test

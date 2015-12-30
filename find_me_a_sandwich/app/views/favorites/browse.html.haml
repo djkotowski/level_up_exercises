@@ -1,0 +1,16 @@
+%h1= 'User Favorites'
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th= 'User'
+      %th= 'Menu Item Name'
+      %th= 'Menu Item Description'
+  %tbody
+    - @favorites.each do |f|
+      - item = @menu_items.find { |m| m.id == f.menu_item_id }
+      - user = @users.find { |u| u.id == f.user_id }
+      %tr
+        %td= user.email
+        %td= item.name
+        %td= item.description

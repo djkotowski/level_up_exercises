@@ -7,8 +7,8 @@ FactoryGirl.define do
 
     trait :with_menus do
       after(:create) do |merchant|
-        create(:menu, name: "Lunch", merchant: merchant)
-        create(:menu, name: "Dinner", merchant: merchant)
+        create(:menu, :with_items, name: "Lunch", merchant: merchant)
+        create(:menu, :with_items, name: "Dinner", merchant: merchant)
       end
     end
   end

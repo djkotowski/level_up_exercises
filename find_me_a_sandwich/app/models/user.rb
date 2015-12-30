@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   belongs_to :location
 
+  has_many :favorites
+
   validates_format_of :last_name, :first_name, with: VALID_NAME_PATTERN
 
   scope :visible, -> { where(profile_visible: true) }

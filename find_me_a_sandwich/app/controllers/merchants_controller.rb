@@ -2,6 +2,7 @@ class MerchantsController < ApplicationController
   before_action :retrieve_location
   before_action :retrieve_merchants, only: [:index]
   before_action :retrieve_merchant, only: [:show]
+  before_action :find_user_favorites, only: [:show]
 
   def index
     return unless @location.blank?

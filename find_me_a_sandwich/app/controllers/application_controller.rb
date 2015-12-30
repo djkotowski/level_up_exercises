@@ -7,4 +7,9 @@ class ApplicationController < ActionController::Base
       ENV["DELIVERY_API_SECRET"],
       delivery_auth_callback_url)
   end
+
+  def find_user_favorites
+    @user = User.find(current_user.id)
+    @favorites = @user.favorites
+  end
 end

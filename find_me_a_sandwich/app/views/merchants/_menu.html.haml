@@ -9,6 +9,12 @@
                 %h4= group
           %tbody
             - items.each do |item|
+              - is_favorite = @favorites.any? { |f| f.menu_item_id == item.id }
               %tr
-                %th= item.name
+                %th
+                  = form_for :favorite, url: user_favorites_path(current_user) do |f|
+                    = f.check_box :checked, { checked: is_favorite, id: "favorite_#{item.id}", class: "save_favorite_checkbox" }
+                    = f.hidden_field :menu_item_id, value: item.id, id: "menu_item_id_#{item.id}"
+                    = f.submit "Save", { class: "save_favorite_button" }
+                  %span= item.name
                 %td= item.description

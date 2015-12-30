@@ -1,0 +1,15 @@
+<!-- favorite/index.html.haml -->
+%h1= 'My Favorites'
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th{ colspan: 3 }
+        %h4= 'Menu Items'
+  %tbody
+    - @menu_items.each do |item|
+      %tr
+        %th{ class: "favorite_name" }= item.name
+        %td{ class: "favorite_description" }= item.description
+        %td{ class: "favorite_remove_link" }= link_to "Remove", "/users/#{current_user.id}/favorites/#{item.id}", :method => 'delete'
+%div= link_to "Browse", "/favorites/browse"

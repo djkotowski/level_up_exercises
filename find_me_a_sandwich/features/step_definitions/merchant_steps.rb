@@ -1,6 +1,6 @@
 def create_merchants_with_zip(zip, count)
   FactoryGirl.create_list(:location, count, zip: zip).map do |location|
-    FactoryGirl.create(:merchant, location: location)
+    FactoryGirl.create(:merchant, :with_menus, location: location)
   end
 end
 
@@ -16,7 +16,8 @@ Given(/^I am on the merchant index$/) do
 end
 
 When(/^I search a matching ZIP$/) do
-  search_merchants("60654")
+  create_merchants_with_zip("60654", 10)
+  visit '/merchants/1'
 end
 
 When(/^I search without a ZIP$/) do
