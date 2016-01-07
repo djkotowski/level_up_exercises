@@ -19,4 +19,5 @@ end
 VCR.configure do |config|
   config.cassette_library_dir = "features/support/fixtures/vcr"
   config.hook_into(:webmock)
+  config.filter_sensitive_data('<FMAS>') { "#{Rails.application.secrets.locu_api_key}" }
 end
